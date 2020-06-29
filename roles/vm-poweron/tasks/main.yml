@@ -1,0 +1,11 @@
+---
+# tasks file for vm-poweron
+#
+- name: Power on a virtual machine by uuid
+  vmware_guest:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ validate_certs | default('False') }}"
+    uuid: "{{ vm_uuid }}"
+    state: poweredon

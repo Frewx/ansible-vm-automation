@@ -1,0 +1,12 @@
+---
+# tasks file for vm-poweroff
+
+
+- name: Power off a virtual machine by uuid
+  vmware_guest:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: "{{ validate_certs | default('False') }}"
+    uuid: "{{ vm_uuid }}"
+    state: poweredoff

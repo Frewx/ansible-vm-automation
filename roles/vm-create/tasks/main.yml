@@ -16,10 +16,13 @@
     hardware:
       num_cpus: "{{ cpu }}"
       memory_mb: "{{ mem_mb }}"
+      hotadd_cpu: "{{ hot_add_cpu | default('True') }}"
+      hotremove_cpu: "{{ hot_remove_cpu | default('True') }}"
+      hotadd_memory: "{{ hot_add_memory | default('True') }}"
     disk:
     - size_gb: "{{ disk_size | default('16') }}"
       type: "{{ vm_disk_type | default('thin') }}"
-      datastore: "{{ vm_datastore | default('ISCSI-200GB') }}"
+      datastore: "{{ vm_datastore | default('ISCSI-POOL') }}"
     networks:
     - name: "{{ vm_port_group | default('VM Network') }}"
     wait_for_ip_address: yes

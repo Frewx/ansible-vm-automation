@@ -5,3 +5,9 @@
     - { role: vm-create, when: task == 'Create' or task == 'create' }
     - { role: vm-rename, when: task == 'Rename' or task == 'rename' }
     - { role: vm-delete, when: task == 'Delete' or task == 'delete' }
+    - { role: vm-poweron, when: task == 'Poweron' or task == 'poweron' }
+    - { role: vm-poweroff, when: task == 'Poweroff' or task == 'poweroff' }
+    - { role: vm-restart, when: task == 'Restart' or task == 'restart' }
+    - { role: vm-suspend, when: task == 'Suspend' or task == 'suspend' }
+    - { role: vm-shutdownguest, when: task == 'Shutdown' or task == 'shutdown' }
+    - { role: vm-rebootguest, when: task == 'Reboot' or task == 'reboot' }
