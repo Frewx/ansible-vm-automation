@@ -1,0 +1,27 @@
+---
+# tasks file for vm-create
+- name: Clone VM from template
+  vmware_guest:
+    validate_certs: "{{ validate_certs | default('False') }}"
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    datacenter: "{{ vm_datacenter | default('WashingtonDC') }}"
+    name: "{{ vm_name }}" 
+    folder: "{{ vm_folder | default('Provisioned') }}"
+    template: "{{ vm_template }}"
+    state: poweredon
+    annotation: "{{ vm_notes | default('Provisioned by ansible') }}"
+    cluster: "{{ vm_cluster | default('Prod') }}"
+    hardware:
+      num_cpus: "{{ cpu }}"
+      memory_mb: "{{ mem_mb }}"
+    disk:
+    - size_gb: "{{ disk_size | default('16') }}"
+      type: "{{ vm_disk_type | default('thin') }}"
+      datastore: "{{ vm_datastore | default('ISCSI-200GB') }}"
+    networks:
+    - name: "{{ vm_port_group | default('VM Network') }}"
+    wait_for_ip_address: yes
+  register: dynamic_vm
+  when: network_type == 'dhcp'

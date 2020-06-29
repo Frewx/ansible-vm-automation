@@ -1,0 +1,13 @@
+---
+# tasks file for vm-rename
+
+- name: Rename a virtual machine (requires the virtual machine's uuid)
+  vmware_guest:
+    validate_certs: "{{ validate_certs | default('False') }}"
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    uuid: "{{ vm_uuid }}"
+    name: "{{ new_vm_name }}"
+    state: "{{ vm_state | default('present') }}"
+  delegate_to: localhost

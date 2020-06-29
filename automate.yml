@@ -1,0 +1,7 @@
+- name: Start the vm-create task
+  hosts: all
+  connection: local
+  roles:
+    - { role: vm-create, when: task == 'Create' or task == 'create' }
+    - { role: vm-rename, when: task == 'Rename' or task == 'rename' }
+    - { role: vm-delete, when: task == 'Remove' or task == 'remove' }
