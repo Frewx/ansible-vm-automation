@@ -10,4 +10,3 @@
     uuid: "{{ vm_uuid }}"
     name: "{{ new_vm_name }}"
     state: "{{ vm_state | default('present') }}"
-  delegate_to: localhost
