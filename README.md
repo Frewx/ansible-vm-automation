@@ -17,7 +17,13 @@ The playbook has extra variables for user to set it later or to use it in AWX or
 
 - **VM-CREATE**
 
+*If network_type=dhcp*
+
 `ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_datacenter=<vm_datacenter> vm_name=<vm_name> vm_folder=<vm_folder> vm_template=<vm_template_name> vm_notes=<vm_notes> vm_cluster=<vm_cluster> hot_add_cpu=<true_or_false> hot_remove_cpu=<true_or_false> hot_add_memory=<true_or_false> cpu=<cpu_in_number> mem_mb=<memory_in_mb> disk_size=<disk_size_in_gb> vm_disk_type=<vm_disk_type> vm_datastore=<vm_datastore> vm_port_group=<vm_port_group> network_type=<network_type> task=create"`
+
+*If network_type=static*
+
+`ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_datacenter=<vm_datacenter> vm_name=<vm_name> vm_folder=<vm_folder> vm_template=<vm_template_name> vm_notes=<vm_notes> vm_cluster=<vm_cluster> hot_add_cpu=<true_or_false> hot_remove_cpu=<true_or_false> hot_add_memory=<true_or_false> cpu=<cpu_in_number> mem_mb=<memory_in_mb> disk_size=<disk_size_in_gb> vm_disk_type=<vm_disk_type> vm_datastore=<vm_datastore> vm_port_group=<vm_port_group> network_type=<network_type> vm_ip=<static_vm_ip> netmask=<netmask> dns_server1=<dns_server1> dns_server2=<dns_server2> network_gateway=<network_gateway> task=create"`
 
 - **VM-RENAME**
 
