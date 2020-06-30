@@ -1,4 +1,4 @@
-- name: Start the vm-create task
+- name: Start VM automation
   hosts: all
   connection: local
   roles:

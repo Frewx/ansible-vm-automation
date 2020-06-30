@@ -1,7 +1,60 @@
 # ansible-vm-automation
 VMware VM automation via ansible.
+This playbook can do the following:
 
+- create
+- rename
+- delete
+- poweroff
+- poweron
+- rebootguest
+- shutdownguest
+- suspend
 
+The playbook has extra variables for user to set it later or to use it in AWX or some kind of user forms. (e.g ManageIQ)
+
+# USAGE
+
+- VM-CREATE
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_name=<vm_name> vm_template=<vm_template_name> cpu=<cpu_in_number> mem_mb=<memory_in_mb> disk_size=<disk_size_in_gb> network_type=<network_type> task=create"
+
+- VM-RENAME
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> new_vm_name=<new_vm_name> task=rename"
+
+- VM-DELETE
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> task=delete"
+
+- VM-POWERON
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> task=poweron"
+
+- VM-POWEROFF
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> task=poweroff"
+
+- VM-RESTART
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> task=restart"
+
+- VM-REBOOTGUEST
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> task=reboot"
+
+- VM-SHUTDOWNGUEST
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> task=shutdown"
+
+- VM-SUSPEND
+
+ansible-playbook -i <inventory_name> automate.yml -e "vcenter_hostname=<vcenter_hostname> vcenter_username=<vcenter_username> vcenter_password=<vcenter_password> vm_uuid=<vm_uuid_in_vmware> task=suspend"
+
+## Usage Notes
+
+* You can always set extra variables to a default value. In this case you can set your vcenter_hostname, vcenter_username and vcenter_password to default values. But I don't recommend using passwords in plain text. You should use a secret.
+* There is a validate_certs in variables, this variable is set to 'False' by default. You can enable this variable either using in command line or editing through tasks.
 ## Future Works
 
 * VM-CREATE 
